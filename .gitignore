@@ -1,0 +1,6 @@
+vendor/
+dist/
+tests/fixtures/
+__pycache__/
+.pytest_cache/
+*.pyc
