@@ -10,26 +10,27 @@ Ferramenta para a área de **Segurança do Trabalho** que monta os relatórios m
 
 ## O problema
 
-Todo começo de mês, alguém da Segurança do Trabalho precisava:
+Todo mês, alguém da Segurança do Trabalho precisava montar de 5 a 6 relatórios:
 
-1. pegar cada PT em papel (4 páginas cada), separar a 1ª folha e escanear uma por uma;
+1. abrir cada documento escaneado (uma PT tem 4 páginas) e separar só a 1ª folha;
 2. juntar tudo num PDF, contar, conferir a sequência de números e lançar no indicador;
 3. repetir o processo para DDS, Quase Acidentes e Melhorias;
 4. montar os gráficos para a reunião à mão.
 
-Isso levava **cerca de 4 h 40 por mês**, e só o relatório de PTs tomava de 40 min a 1 h de trabalho sem pausas.
+Cada relatório levava de 40 min a 1 h. Parte desse tempo era escanear o papel, que continua existindo e hoje é feito em lote, separado do relatório. Por isso, a conta abaixo considera **só a montagem**: cerca de 25 min por relatório.
 
 ## O resultado
 
 | | Antes | Com a ferramenta |
 |---|---|---|
-| Tempo por mês | ~4 h 40 | **~23 min** |
-| Juntar a 1ª página de 121 PDFs | ~50 min por relatório | **menos de 1 s** |
+| Montar um relatório (sem contar o escaneamento) | ~25 min | **~3 min** |
+| Tempo por mês (5 a 6 relatórios) | ~2 h 20 | **~17 min** |
+| Juntar a 1ª página de 121 PDFs | página por página | **menos de 1 s** |
 | Conferência de números repetidos ou faltando | à mão, quando dava | automática (achou uma PT duplicada no 1º uso) |
 | Gráficos para a reunião | Excel/PowerPoint | Painel em PDF, PNG por gráfico e CSV |
 | Quem consegue fazer | quem conhecia o processo | a técnica de segurança, sozinha |
 
-São cerca de **51 horas por ano** devolvidas para a equipe.
+São cerca de **24 horas por ano** devolvidas para a equipe. É uma estimativa conservadora: o escaneamento não entra na conta, e o tempo "com a ferramenta" ainda será cronometrado.
 
 ## O que ela faz
 
