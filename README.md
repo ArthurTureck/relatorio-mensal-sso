@@ -92,4 +92,9 @@ Os testes abrem a ferramenta num navegador de verdade (Playwright) e cobrem:
 Na versão de produção, a bateria completa tem 69 testes, incluindo os de OCR com formulários reais, que não vão para este repositório.
 
 ---
+## Uso de IA
+
+O código foi escrito com apoio de IA (Claude, da Anthropic). Eu defini o problema, testei cada versão com dados fictícios e revisei o resultado. A ferramenta em si **não usa IA**: o OCR (Tesseract) roda no próprio computador e nenhum documento sai dele.
+
+---
 Feito por [Arthur Tureck](https://www.linkedin.com/in/arthur-de-conti-tureck-86b317287/).
