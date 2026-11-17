@@ -18,5 +18,15 @@ with sync_playwright() as p:
     pg.wait_for_timeout(300); pg.click("#puxarBtn"); pg.wait_for_function("itens.length>20", timeout=30000); pg.wait_for_timeout(1500)
     pg.evaluate("window.scrollTo(0,240)"); pg.wait_for_timeout(200)
     pg.screenshot(path=str(DOCS/"ferramenta-juntar.png"))
+    # relatório semanal de DDS, com a pasta de exemplo do modo demonstração
+    pg = ctx.new_page(); pg.goto(HTML + "?demo"); pg.wait_for_function("!D.varrendo && D.docs.length>0", timeout=60000)
+    pg.click(".nav button[data-v=juntar]"); pg.click(".tipo[data-tipo=DDS]"); pg.select_option("#mes", "10"); pg.wait_for_timeout(300)
+    pg.click("#puxarBtn"); pg.wait_for_selector("#semCard:not([hidden])", timeout=30000); pg.wait_for_timeout(1500)
+    pg.click("#semSemanas button:nth-child(4)")
+    for k, v in enumerate(["31/35", "88", "27/30", "92"]):
+        campo = pg.locator("#semLinhas .sem-l input[data-c=part]").nth(k)
+        if campo.count(): campo.fill(v)
+    pg.locator("#semCard").scroll_into_view_if_needed(); pg.evaluate("window.scrollBy(0,-120)"); pg.wait_for_timeout(300)
+    pg.screenshot(path=str(DOCS/"relatorio-semanal-dds.png"))
     b.close()
 print("ok")

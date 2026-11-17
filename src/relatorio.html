@@ -295,6 +295,25 @@ details.tab table{border-collapse:collapse;margin-top:6px;width:100%}details.tab
 footer{max-width:1180px;margin:0 auto;padding:6px 24px 30px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--tx-3)}
 footer .priv{display:flex;gap:6px;align-items:center}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Relatório semanal de DDS */
+.sem-tit{font-size:17px;margin:0 0 10px}.sem-tit small{display:block;font-size:13px;font-weight:500;color:var(--tx-3);margin-top:2px}
+.sem-semanas{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}
+.sem-semanas button{border:1px solid var(--borda-forte);background:transparent;color:inherit;border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.sem-semanas button[aria-pressed=true]{background:#F0892B;border-color:transparent;color:#1b1b1b;font-weight:700}
+.sem-linhas{display:flex;flex-direction:column;gap:10px}
+.sem-l{border:1px solid var(--borda);border-radius:10px;padding:10px}
+.sem-l .d{font-size:12px;font-weight:700;opacity:.75;margin-bottom:6px}
+.sem-l input{width:100%;box-sizing:border-box;padding:7px 9px;border-radius:8px;border:1px solid var(--borda-forte);background:transparent;color:inherit;font:inherit;font-size:13.5px;margin-bottom:6px}
+.sem-l .par{display:flex;gap:8px;align-items:center}.sem-l .par input{width:110px;margin:0}.sem-l .par span{font-size:13px;opacity:.8}
+.sem-l .par input.ruim{border-color:#d33}
+.sem-dica{font-size:12.5px;opacity:.75;margin:10px 0 0}
+#semCard .btn{margin-top:10px}
+/* Demonstração */
+.demo-box{margin:22px auto 0;max-width:520px;border:1px dashed var(--borda-forte);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--tx-2)}
+.demo-box .btn-demo{margin-top:10px;background:var(--sup);color:var(--tx);border:1.5px solid var(--borda-forte)}
+.demo-aviso{background:#FFF4E5;color:#5a3a06;border:1px solid #F0C78A;border-radius:10px;padding:8px 12px;font-size:13px;margin:0 0 14px}
+[data-theme=escuro] .demo-aviso{background:#2a2112;color:#f3d9ae;border-color:#6b5427}
 </style>
 </head>
 <body>
@@ -343,6 +362,7 @@ footer .priv{display:flex;gap:6px;align-items:center}
     <p>Escolha a pasta de Segurança do Trabalho na rede (ou as pastas de PT, DDS, Quase Acidente e Melhorias). O site lê só os nomes e datas dos arquivos, aqui no computador, e monta os gráficos.</p>
     <button class="btn-grande" id="dConectar2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>Conectar pasta de Segurança</button>
     <div style="margin-top:10px"><button class="gbtn" id="dSimples" style="display:inline-flex">Ou escolher uma pasta sem conexão permanente</button></div>
+    <div class="demo-box"><b>Só quer ver como funciona?</b> Monte uma pasta de exemplo com documentos fictícios, gerados aqui no navegador.<br><button class="btn-grande btn-demo" id="dDemo" type="button">Ver com dados de exemplo</button></div>
     <div class="passos"><div><b>1. Conecte uma vez</b>O navegador pergunta se pode ler a pasta. Clique em <i>Ver arquivos</i> / <i>Permitir</i>.</div><div><b>2. Ele se atualiza</b>A cada 5 minutos (e ao voltar para a aba) o painel confere se chegaram documentos novos.</div><div><b>3. Leve para a reunião</b>Escolha o tipo e o período e baixe o painel em PDF, as imagens ou os dados para Excel.</div></div>
   </section>
   <div id="dConteudo" hidden>
@@ -411,6 +431,15 @@ footer .priv{display:flex;gap:6px;align-items:center}
       <div class="msg" id="msg" role="status"></div>
       <div class="resumo" id="resumo"><label for="resumoTxt">Resumo para o Teams / indicador</label><textarea id="resumoTxt" readonly></textarea><button class="btn btn-sec" id="copiar">Copiar resumo</button></div>
       <button class="btn btn-sec" id="limpar">Começar de novo</button>
+    </section>
+    <section class="card" id="semCard" hidden aria-labelledby="semTit">
+      <h2 id="semTit" class="sem-tit">Relatório semanal de DDS<small>A tabela da semana, pronta para o e-mail</small></h2>
+      <div class="sem-semanas" id="semSemanas" role="group" aria-label="Semana"></div>
+      <div class="sem-linhas" id="semLinhas"></div>
+      <p class="sem-dica">Data, palestrante e tema vêm do nome do arquivo. Participação: digite o % (ex.: <b>85</b>) ou presentes/total (ex.: <b>29/35</b>).</p>
+      <button class="btn btn-prim" id="semPdf" type="button"><span>Gerar relatório semanal (PDF)</span></button>
+      <button class="btn btn-sec" id="semCopiar" type="button">Copiar tabela para o e-mail</button>
+      <div class="msg" id="semMsg" role="status"></div>
     </section>
   </aside>
 </div>
@@ -1300,7 +1329,7 @@ async function varrer(manual){
     const lista=[...mapa.values()];
     if(D.ult) D.novos=new Set(lista.filter(d=>vistas.has(d.fonte)&&!antes.has(d.k)).map(d=>d.k));
     D.docs=lista;D.ult=Date.now();D.dur=(performance.now()-t0)/1000;D.totalLidos=D.lidos;
-    IDB.set("cache",{quando:D.ult,docs:D.docs.map(({arquivo,h,...r})=>r)});
+    if(!D.fontes.some(f=>f.modo==="demo"))IDB.set("cache",{quando:D.ult,docs:D.docs.map(({arquivo,h,...r})=>r)});
   }catch(e){console.warn("varredura",e);D.erro="Não consegui ler uma das pastas ("+(e.name||e.message)+"). Clique em Reconectar.";D.fontes.forEach(f=>{if(f.modo==="fsa")f.ok=false;});}
   D.varrendo=false;renderDash();atualizarPuxar();
 }
@@ -1541,6 +1570,123 @@ aplicarTema(document.documentElement.dataset.theme||"sistema");
 render();
 iniciarDash();
 irPara(location.hash.slice(1)||"painel");
+
+/* ---------- Relatório semanal de DDS (substitui a tabela montada no Word) ---------- */
+const SEMR={semana:null,edit:{}};
+const PART_KEY="sso_dds_part";
+const separaPessoas=s=>String(s||"").split(/\s*(?:\/|,|\be\b)\s*/i).map(x=>x.trim()).filter(Boolean);
+function semSemanas(){
+  const ok=validos().filter(i=>i.dia>=1&&i.dia<=diasNoMes()),m={};
+  ok.forEach(i=>{const ini=i.dia-(diaSemana(i.dia)+6)%7;(m[ini]||(m[ini]={ini,itens:[]})).itens.push(i);});
+  return Object.values(m).sort((a,b)=>a.ini-b.ini).map(s=>{s.itens.sort((a,b)=>a.dia-b.dia);s.de=s.itens[0].dia;s.ate=s.itens[s.itens.length-1].dia;return s;});
+}
+const semRot=s=>`${p2(s.de)}/${p2(mesSel())} a ${p2(s.ate)}/${p2(mesSel())}`;
+function semPart(v){v=String(v||"").trim().replace("%","");if(!v)return "";
+  let m=v.match(/^(\d+)\s*\/\s*(\d+)$/);if(m&&+m[2]>0&&+m[1]<=+m[2])return (Math.round(+m[1]/+m[2]*10000)/100).toLocaleString("pt-BR",{maximumFractionDigits:2})+"%";
+  if(/^\d+([.,]\d+)?$/.test(v)&&+v.replace(",",".")<=100)return (+v.replace(",",".")).toLocaleString("pt-BR",{maximumFractionDigits:2})+"%";
+  return null;}
+const semChave=i=>i.file.name+"|"+i.file.size;
+function semLinhas(s){const P=ls.get(PART_KEY,{});
+  return s.itens.map(i=>{const e=SEMR.edit[semChave(i)]||{};return {i,k:semChave(i),dia:`${p2(i.dia)}/${p2(mesSel())}/${anoSel()}`,
+    resp:e.resp??separaPessoas(i.pessoa).join("/"),tema:e.tema??(i.tema||""),part:P[semChave(i)]||""};});}
+function semRender(){
+  const card=$("#semCard");if(!card)return;
+  const sems=tipo==="DDS"?semSemanas():[];card.hidden=!sems.length;if(!sems.length)return;
+  if(!sems.some(s=>s.ini===SEMR.semana))SEMR.semana=sems[sems.length-1].ini;
+  $("#semSemanas").innerHTML=sems.map(s=>`<button type="button" data-s="${s.ini}" aria-pressed="${s.ini===SEMR.semana}">${semRot(s)} · ${s.itens.length}</button>`).join("");
+  $("#semSemanas").querySelectorAll("button").forEach(b=>b.onclick=()=>{SEMR.semana=+b.dataset.s;$("#semMsg").className="msg";$("#semMsg").textContent="";semRender();});
+  const s=sems.find(x=>x.ini===SEMR.semana);
+  $("#semLinhas").innerHTML=semLinhas(s).map(l=>`<div class="sem-l" data-k="${esc(l.k)}"><div class="d">${l.dia}</div>
+    <input data-c="resp" value="${esc(l.resp)}" placeholder="Responsável" aria-label="Responsável ${l.dia}">
+    <input data-c="tema" value="${esc(l.tema)}" placeholder="Tema" aria-label="Tema ${l.dia}">
+    <div class="par"><input data-c="part" value="${esc(l.part)}" placeholder="%" inputmode="decimal" aria-label="Participação ${l.dia}"><span>${l.part?esc(semPart(l.part)||"valor inválido"):"participação"}</span></div></div>`).join("");
+  $("#semLinhas").querySelectorAll("input").forEach(inp=>inp.oninput=()=>{const k=inp.closest(".sem-l").dataset.k,c=inp.dataset.c;
+    if(c==="part"){const P=ls.get(PART_KEY,{});P[k]=inp.value;ls.set(PART_KEY,P);const r=semPart(inp.value);inp.classList.toggle("ruim",r===null);
+      inp.nextElementSibling.textContent=inp.value?(r||"valor inválido"):"participação";}
+    else{(SEMR.edit[k]||(SEMR.edit[k]={}))[c]=inp.value;}});
+}
+function semAtual(){const s=semSemanas().find(x=>x.ini===SEMR.semana);if(!s)return null;
+  const linhas=semLinhas(s).map(l=>({...l,partF:semPart(l.part)||""}));
+  return {s,linhas,tit:`RELATÓRIO DE DDS ${p2(s.de)}/${p2(mesSel())} a ${p2(s.ate)}/${p2(mesSel())}`,un:String($("#unidade").value||"").toUpperCase()};}
+function semQuebra(txt,F,size,maxW){const out=[];String(txt||"").split(/\n/).forEach(par=>{let l="";
+  par.split(/\s+/).filter(Boolean).forEach(w=>{const t=l?l+" "+w:w;if(F.widthOfTextAtSize(t,size)<=maxW)l=t;else{if(l)out.push(l);
+    while(F.widthOfTextAtSize(w,size)>maxW&&w.length>1){let k=w.length;while(k>1&&F.widthOfTextAtSize(w.slice(0,k),size)>maxW)k--;out.push(w.slice(0,k));w=w.slice(k);}l=w;}});out.push(l);});
+  return out.length?out:[""];}
+async function semGerarPdf(){
+  const R=semAtual();if(!R)return;const msg=$("#semMsg");const vaz=R.linhas.filter(l=>!l.partF).length;
+  try{
+    const {rgb:RGB,StandardFonts}=PDFLib,doc=await PDFLib.PDFDocument.create(),F=await doc.embedFont(StandardFonts.Helvetica),FB=await doc.embedFont(StandardFonts.HelveticaBold);
+    const W=595.28,H=841.89,pg=doc.addPage([W,H]),preto=RGB(0,0,0),L=1;
+    const ret=(x,y,w,h)=>pg.drawRectangle({x,y,width:w,height:h,borderColor:preto,borderWidth:L});
+    const centro=(t,F,s,x,w,y)=>{t=win(t);pg.drawText(t,{x:x+(w-F.widthOfTextAtSize(t,s))/2,y,size:s,font:F,color:preto});};
+    const X0=72,TW=W-2*X0,Y0=H-90,hc=56;
+    ret(X0,Y0-hc,TW,hc);pg.drawLine({start:{x:X0,y:Y0-hc/2},end:{x:X0+TW,y:Y0-hc/2},thickness:L,color:preto});
+    centro(R.tit,FB,10,X0,TW,Y0-hc/2+9);centro(R.un,FB,10,X0,TW,Y0-hc+9);
+    const cols=[["Dia",.18],["Responsável",.28],["Tema",.34],["Participação (%)",.20]].map(([n,f])=>[n,f*TW]);
+    let y=Y0-hc-22;const sz=9.5,lh=12;
+    ret(X0,y-30,TW,30);centro("DDS",F,sz,X0,TW,y-19);y-=30;
+    const linha=(vals,fonte)=>{const ls_=vals.map((v,j)=>semQuebra(win(v),fonte,sz,cols[j][1]-10));const n=Math.max(...ls_.map(x=>x.length)),h=Math.max(30,n*lh+14);
+      if(y-h<60)return false;let x=X0;
+      ls_.forEach((ln,j)=>{ret(x,y-h,cols[j][1],h);const top=y-(h-ln.length*lh)/2-9;ln.forEach((t,k)=>centro(t,fonte,sz,x,cols[j][1],top-k*lh));x+=cols[j][1];});y-=h;return true;};
+    linha(cols.map(c=>c[0]),FB);
+    for(const l of R.linhas)if(!linha([l.dia,l.resp,l.tema,l.partF],F)){msg.className="msg av";msg.textContent="Coube só parte das linhas numa página.";break;}
+    doc.setTitle(R.tit);
+    const nome=`Relatorio DDS ${p2(R.s.de)}.${p2(mesSel())} a ${p2(R.s.ate)}.${p2(mesSel())} - ${$("#unidade").value}.pdf`;
+    const ok=await salvarArquivo(new Blob([await doc.save()],{type:"application/pdf"}),nome);
+    if(ok!==false){msg.className="msg ok";msg.innerHTML=`<b>Pronto!</b> ${esc(nome)} salvo.${vaz?` <br>Atenção: ${vaz} DDS sem participação preenchida.`:""}`;}
+  }catch(e){msg.className="msg er";msg.textContent="Não consegui gerar: "+(e.message||e);}
+}
+async function semCopiar(){const R=semAtual();if(!R)return;const msg=$("#semMsg");
+  const td='style="border:1px solid #000;padding:6px 10px;text-align:center;font-family:Calibri,Arial,sans-serif;font-size:11pt"';
+  const html=`<table style="border-collapse:collapse"><tr><td ${td} colspan="4"><b>${esc(R.tit)}</b><br><b>${esc(R.un)}</b></td></tr><tr><td ${td} colspan="4">DDS</td></tr>
+<tr>${["Dia","Responsável","Tema","Participação (%)"].map(c=>`<td ${td}>${c}</td>`).join("")}</tr>
+${R.linhas.map(l=>`<tr><td ${td}>${l.dia}</td><td ${td}>${esc(l.resp)}</td><td ${td}>${esc(l.tema)}</td><td ${td}>${esc(l.partF)}</td></tr>`).join("")}</table>`;
+  const txt=[R.tit,R.un,"","Dia\tResponsável\tTema\tParticipação (%)",...R.linhas.map(l=>[l.dia,l.resp,l.tema,l.partF].join("\t"))].join("\n");
+  try{await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([html],{type:"text/html"}),"text/plain":new Blob([txt],{type:"text/plain"})})]);}
+  catch(e){try{await navigator.clipboard.writeText(txt);}catch(_){msg.className="msg er";msg.textContent="O navegador bloqueou a cópia.";return;}}
+  msg.className="msg ok";msg.textContent="Tabela copiada. Cole no corpo do e-mail (Ctrl+V).";}
+$("#semPdf").onclick=semGerarPdf;$("#semCopiar").onclick=semCopiar;
+{const _render=render;render=function(){_render();try{semRender();}catch(e){console.warn("semanal",e);}};}
+
+/* ---------- Demonstração: pasta de exemplo com documentos fictícios ---------- */
+const DEMO={PESSOAS:["Ana Souza","Bruno Lima","Carla Dias","Diego Rocha","Elisa Prado","Fabio Nunes"],
+  TEMAS:["Uso de EPI","Regras de Ouro","Ergonomia","Trabalho em Altura","Direção defensiva","Prevenção de incêndio","5S no setor","Animais peçonhentos"],
+  LOCAIS:["Pátio","Portaria","Plataforma","Oficina","Escritório"]};
+function demoRand(seed){let x=seed>>>0;return ()=>{x=Math.imul(x^x>>>15,2246822507)^Math.imul(x^x>>>13,3266489909);x^=x>>>16;return (x>>>0)/4294967296;};}
+async function demoPdf(_a,_b,titulo,linhas,paginas){
+  const d=await PDFLib.PDFDocument.create();const f=await d.embedFont(PDFLib.StandardFonts.Helvetica),fb=await d.embedFont(PDFLib.StandardFonts.HelveticaBold);
+  const {rgb}=PDFLib;
+  for(let p=0;p<paginas;p++){const pg=d.addPage([595.28,841.89]),w=595.28,h=841.89;
+    pg.drawRectangle({x:50,y:h-110,width:w-100,height:26,color:rgb(.25,.25,.25)});
+    const t=win(titulo);pg.drawText(t,{x:(w-fb.widthOfTextAtSize(t,13))/2,y:h-102,size:13,font:fb,color:rgb(1,1,1)});
+    let y=h-140;for(const l of [...linhas,...(p?["(continuação)"]:[]),"DOCUMENTO FICTÍCIO - DEMONSTRAÇÃO"]){pg.drawText(win(l),{x:60,y,size:11,font:f});pg.drawLine({start:{x:60,y:y-4},end:{x:w-60,y:y-4},thickness:.5});y-=26;}
+    pg.drawRectangle({x:50,y:y-10,width:w-100,height:h-110-(y-10),borderWidth:1,borderColor:rgb(0,0,0)});}
+  return await d.save();
+}
+async function montarDemo(){
+  const b=$("#dDemo");if(b){b.disabled=true;b.textContent="Gerando documentos fictícios...";}
+  const r=demoRand(2026),pick=a=>a[Math.floor(r()*a.length)],int=(a,z)=>a+Math.floor(r()*(z-a+1));
+  const hoje=new Date(),ano=hoje.getFullYear(),ultMes=hoje.getMonth()+1;
+  let reg=0;const files=[],add=async(cam,titulo,linhas,pag)=>{const bytes=await demoPdf(null,null,titulo,[...linhas,`Registro de exemplo nº ${++reg}`],pag);
+    const f=new File([bytes],cam.split("/").pop(),{type:"application/pdf",lastModified:Date.now()});
+    Object.defineProperty(f,"webkitRelativePath",{value:"Seguranca do Trabalho (exemplo)/"+cam});files.push(f);};
+  let n=100;
+  for(let m=1;m<=ultMes;m++){
+    const pasta=`${m}. ${MESES[m-1]}`,ate=m===ultMes?Math.max(1,hoje.getDate()):new Date(ano,m,0).getDate(),dia=()=>int(1,ate);
+    for(let k=int(12,18);k>0;k--){const d=dia();await add(`PT/${ano}/${pasta}/${p2(d)} - PT ${n}.pdf`,`PERMISSÃO DE TRABALHO - PT Nº ${n}`,[`Data: ${p2(d)}/${p2(m)}/${ano}`,"Serviço: manutenção preventiva","Executante: equipe fictícia"],2);n++;}
+    const diasDds=new Set();for(let k=int(10,14);k>0;k--){let d=dia(),g=0;while((diasDds.has(d)||new Date(ano,m-1,d).getDay()%6===0)&&g++<20)d=dia();if(diasDds.has(d))continue;diasDds.add(d);
+      const tema=pick(DEMO.TEMAS),quem=pick(DEMO.PESSOAS.slice(0,4));await add(`DDS/${ano}/${pasta}/${p2(d)} - DDS - ${tema} - ${quem}.pdf`,"DDS",[`Data: ${p2(d)}/${p2(m)}/${ano}`,`Tema: ${tema}`,`Palestrante: ${quem}`],1);}
+    for(let k=int(3,14);k>0;k--){const d=dia(),quem=r()<.2?"Sem Nome":pick(DEMO.PESSOAS);await add(`Quase Acidente/${pasta}/${p2(d)} - Relato de Quase Acidente - ${quem}.pdf`,"RELATO DE QUASE ACIDENTE",[`Local: ${pick(DEMO.LOCAIS)}`,"Gravidade: Baixa ( ) Média ( ) Alta ( )",`Data: ${p2(d)}/${p2(m)}/${ano}`],1);}
+    for(let k=int(0,6);k>0;k--){const d=dia(),quem=pick(DEMO.PESSOAS);await add(`Melhorias de Segurança/${pasta}/${p2(d)} - Melhoria de Segurança - ${quem}.pdf`,"MELHORIAS DE SEGURANÇA",[`Local: ${pick(DEMO.LOCAIS)}`,"Impacto: Baixo ( ) Médio ( ) Alto ( )",`Data: ${p2(d)}/${p2(m)}/${ano}`],1);}
+  }
+  D.demo=true;D.fontes=D.fontes.filter(f=>f.modo!=="demo");D.fontes.push({id:"demo",nome:"Pasta de exemplo (fictícia)",files,modo:"demo",ok:true});
+  await varrer(true);if(b){b.disabled=false;b.textContent="Ver com dados de exemplo";}
+  const c=$("#dConteudo");if(c&&!$("#demoAviso")){const a=document.createElement("p");a.id="demoAviso";a.className="demo-aviso";
+    a.innerHTML="<b>Modo demonstração.</b> Todos os documentos são fictícios e foram gerados agora no seu navegador. Na aba <b>Juntar e classificar</b>, escolha DDS e clique em puxar os arquivos do mês para ver o relatório semanal.";c.prepend(a);}
+}
+$("#dDemo").onclick=montarDemo;
+window.montarDemo=montarDemo;
+if(/[?&#]demo\b/.test(location.search+location.hash))setTimeout(montarDemo,300);
 </script>
 </body>
 </html>

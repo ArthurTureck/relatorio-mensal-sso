@@ -4,6 +4,8 @@ Ferramenta para a área de **Segurança do Trabalho** que monta os relatórios m
 
 É **um único arquivo HTML**: abre com dois cliques, não precisa instalar nada e nenhum documento sai do computador.
 
+**[▶ Abrir a demonstração](https://arthurtureck.dev.br/demo/relatorio-mensal-sso.html?demo)**: monta uma pasta de exemplo com uns 400 documentos fictícios, gerados no próprio navegador. Funciona melhor no Chrome ou no Edge, no computador.
+
 ![Painel com a visão geral do ano](docs/painel-visao-geral.png)
 
 > Esta é a versão pública e genérica de uma ferramenta que desenvolvi e uso no trabalho. Os nomes, documentos e números das imagens e dos testes são **fictícios**.
@@ -24,13 +26,14 @@ Cada relatório levava de 40 min a 1 h. Parte desse tempo era escanear o papel, 
 | | Antes | Com a ferramenta |
 |---|---|---|
 | Montar um relatório (sem contar o escaneamento) | ~25 min | **~3 min** |
+| Relatório semanal de DDS para os chefes | ~20 min no Word | **~5 min** |
 | Tempo por mês (5 a 6 relatórios) | ~2 h 20 | **~17 min** |
 | Juntar a 1ª página de 121 PDFs | página por página | **menos de 1 s** |
 | Conferência de números repetidos ou faltando | à mão, quando dava | automática (achou uma PT duplicada no 1º uso) |
 | Gráficos para a reunião | Excel/PowerPoint | Painel em PDF, PNG por gráfico e CSV |
 | Quem consegue fazer | quem conhecia o processo | a técnica de segurança, sozinha |
 
-São cerca de **24 horas por ano** devolvidas para a equipe. É uma estimativa conservadora: o escaneamento não entra na conta, e o tempo "com a ferramenta" ainda será cronometrado.
+Só o relatório mensal devolve cerca de **24 horas por ano** para a equipe; o semanal de DDS soma mais umas **12 horas**. É uma estimativa conservadora: o escaneamento não entra na conta, e o tempo "com a ferramenta" ainda será cronometrado.
 
 ## O que ela faz
 
@@ -52,6 +55,17 @@ São cerca de **24 horas por ano** devolvidas para a equipe. É uma estimativa c
 - A classificação é rápida: o visualizador abre com zoom na linha da gravidade, e as teclas 1, 2 e 3 marcam Baixa, Média e Alta.
 
 ![Ferramenta Juntar e classificar](docs/ferramenta-juntar.png)
+
+**Relatório semanal de DDS** (substitui a tabela montada no Word)
+- Ao juntar os DDS do mês, separa as semanas sozinho e preenche dia, palestrante e tema a partir do nome dos arquivos.
+- A participação aceita o % ou "presentes/total" (29/35 vira 82,86%) e avisa quando o valor não faz sentido.
+- Gera o PDF no mesmo formato da tabela antiga ou copia a tabela pronta para colar no e-mail.
+
+![Relatório semanal de DDS](docs/relatorio-semanal-dds.png)
+
+**Modo demonstração**
+- O botão "Ver com dados de exemplo" (ou o endereço com `?demo`) gera no navegador uma pasta fictícia de PT, DDS, Quase Acidentes e Melhorias do ano, e o painel e o Juntar funcionam em cima dela.
+- Nada disso fica salvo: ao recarregar a página, a demonstração some.
 
 ## Por dentro
 
@@ -87,9 +101,10 @@ Os testes abrem a ferramenta num navegador de verdade (Playwright) e cobrem:
 - 121 PDFs de uma vez;
 - mês curto e ano inválido;
 - contagem do painel por tipo, clique na barra, exportações;
-- documento novo chegando na pasta.
+- documento novo chegando na pasta;
+- modo demonstração e relatório semanal de DDS (semanas, cálculo da participação, PDF gerado).
 
-Na versão de produção, a bateria completa tem 69 testes, incluindo os de OCR com formulários reais, que não vão para este repositório.
+Na versão de produção, a bateria completa tem mais testes, incluindo os de OCR com formulários reais, que não vão para este repositório. A versão de trabalho também tem módulos que ainda não estão aqui: painel de indicadores (IPS), conferência de treinamentos pendentes e os controles de armários e de limpeza dos hidrantes.
 
 ---
 ## Uso de IA
