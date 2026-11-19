@@ -63,6 +63,13 @@ Só o relatório mensal devolve cerca de **24 horas por ano** para a equipe; o s
 
 ![Relatório semanal de DDS](docs/relatorio-semanal-dds.png)
 
+**Explorar SEG** (página nova, vinda da versão de trabalho)
+- Conecta a pasta de cima do setor uma vez e mostra a árvore de pastas, a lista com data e tamanho, os atalhos das pastas do setor, favoritos e o que chegou por último (PT, DDS e Quase Acidentes).
+- Busca pelo nome em tudo, sem acento e com várias palavras ("nr 35 turma"), usando um índice só de nomes guardado no navegador. A árvore só lê a pasta que a pessoa abre, então não trava o drive de rede.
+- Abre PDF numa aba nova e copia o caminho completo de qualquer arquivo. Só lê: nunca grava, renomeia ou apaga nada.
+
+![Explorar SEG](docs/explorar-seg.png)
+
 **Modo demonstração**
 - O botão "Ver com dados de exemplo" (ou o endereço com `?demo`) gera no navegador uma pasta fictícia de PT, DDS, Quase Acidentes e Melhorias do ano, e o painel e o Juntar funcionam em cima dela.
 - Nada disso fica salvo: ao recarregar a página, a demonstração some.
@@ -102,9 +109,10 @@ Os testes abrem a ferramenta num navegador de verdade (Playwright) e cobrem:
 - mês curto e ano inválido;
 - contagem do painel por tipo, clique na barra, exportações;
 - documento novo chegando na pasta;
-- modo demonstração e relatório semanal de DDS (semanas, cálculo da participação, PDF gerado).
+- modo demonstração e relatório semanal de DDS (semanas, cálculo da participação, PDF gerado);
+- Explorar SEG (atalhos, busca, abrir PDF, troca de abas).
 
-Na versão de produção, a bateria completa tem mais testes, incluindo os de OCR com formulários reais, que não vão para este repositório. A versão de trabalho também tem módulos que ainda não estão aqui: painel de indicadores (IPS), conferência de treinamentos pendentes e os controles de armários e de limpeza dos hidrantes.
+Na versão de produção, a bateria completa tem mais testes, incluindo os de OCR com formulários reais, que não vão para este repositório. A versão de trabalho também tem módulos que ainda não estão aqui (o Explorar SEG já veio): painel de indicadores (IPS), conferência de treinamentos pendentes e os controles de armários e de limpeza dos hidrantes.
 
 ---
 ## Uso de IA

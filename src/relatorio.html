@@ -314,6 +314,95 @@ footer .priv{display:flex;gap:6px;align-items:center}
 .demo-box .btn-demo{margin-top:10px;background:var(--sup);color:var(--tx);border:1.5px solid var(--borda-forte)}
 .demo-aviso{background:#FFF4E5;color:#5a3a06;border:1px solid #F0C78A;border-radius:10px;padding:8px 12px;font-size:13px;margin:0 0 14px}
 [data-theme=escuro] .demo-aviso{background:#2a2112;color:#f3d9ae;border-color:#6b5427}
+/* ---------- Explorar SEG (v8.27) ---------- */
+#vExplorar{display:block}
+#vExplorar[hidden]{display:none}
+#vExplorar .card{padding:16px 18px;margin-bottom:14px}
+.exp-con{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.exp-con>.cx-faixa,.exp-con>.cx-msg,.exp-con>.cx-dica{flex:1 1 100%}
+.exp-topo{display:grid;gap:10px}
+.exp-busca{display:flex;align-items:center;gap:10px;background:var(--sup-2);border:2px solid transparent;border-radius:12px;padding:4px 14px;color:var(--tx-2)}
+.exp-busca:focus-within{border-color:var(--laranja)}
+.exp-busca input{flex:1;border:0;background:transparent;font:inherit;font-size:16px;padding:9px 0;color:inherit;outline:none;min-width:0}
+.exp-topo-l{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--tx-2)}
+.exp-st{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.exp-mini{border:1px solid var(--sup-3);background:var(--sup-1,transparent);color:inherit;border-radius:8px;padding:4px 10px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.exp-mini:hover{border-color:var(--laranja);color:var(--laranja)}
+.exp-mini svg{fill:none;stroke:currentColor;stroke-width:2}
+.exp-mini.on svg{fill:var(--laranja);stroke:var(--laranja)}
+.exp-corpo{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:14px;align-items:start}
+@media (max-width:900px){.exp-corpo{grid-template-columns:1fr}.exp-arv{max-height:260px}}
+.exp-arv{position:sticky;top:10px;max-height:calc(100vh - 40px);overflow:auto;font-size:13.5px}
+.exp-arv ul{list-style:none;margin:0;padding:0}
+.exp-raiz{display:flex;align-items:center;gap:6px;width:100%;border:0;background:none;font:inherit;font-weight:700;padding:6px 8px;border-radius:8px;cursor:pointer;color:inherit;text-align:left}
+.exp-raiz svg,.exp-ic svg{color:var(--laranja)}
+.exp-no{display:flex;align-items:center;padding-left:calc(var(--n) * 14px);border-radius:8px}
+.exp-no.at,.exp-raiz.at{background:var(--laranja-suave)}
+.exp-no:hover,.exp-raiz:hover{background:var(--sup-2)}
+.exp-tg{border:0;background:none;width:22px;flex:none;cursor:pointer;color:var(--tx-2);font-size:12px;padding:4px 0}
+.exp-nn{border:0;background:none;font:inherit;color:inherit;text-align:left;padding:5px 4px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.exp-main{min-height:300px;min-width:0}
+.exp-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.exp-cab-ac{display:inline-flex;gap:6px;flex-wrap:wrap}
+.exp-trilha{display:flex;align-items:center;flex-wrap:wrap;gap:2px;font-size:14px;min-width:0}
+.exp-tr{border:0;background:none;font:inherit;color:inherit;padding:3px 6px;border-radius:6px;cursor:pointer;font-weight:600}
+.exp-tr:last-child{color:var(--laranja)}
+.exp-tr:hover{background:var(--sup-2)}
+.exp-sep{color:var(--tx-2)}
+.exp-barra{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:13px;color:var(--tx-2)}
+.exp-filtro{flex:1 1 220px;border:1px solid var(--sup-3);background:transparent;color:inherit;border-radius:8px;padding:7px 10px;font:inherit;font-size:13.5px}
+.exp-ord select{font:inherit;border:1px solid var(--sup-3);border-radius:8px;padding:4px 6px;background:transparent;color:inherit}
+.exp-lista{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr)}
+.exp-it{min-width:0}
+.exp-it{display:flex;align-items:center;gap:10px;padding:4px 6px;border-bottom:1px solid var(--sup-2);font-size:13.5px}
+.exp-it:hover{background:var(--sup-2)}
+.exp-ab{display:flex;align-items:center;gap:9px;flex:1 1 260px;min-width:0;border:0;background:none;font:inherit;color:inherit;text-align:left;padding:6px 2px;cursor:pointer}
+.exp-ab:hover .exp-nm{color:var(--laranja);text-decoration:underline}
+.exp-nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exp-it.dir .exp-nm{font-weight:600}
+.exp-ic{display:inline-flex;flex:none}
+.exp-onde{flex:0 1 260px;font-size:12px;color:var(--tx-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exp-mt{flex:none;width:150px;text-align:right;font-size:12px;color:var(--tx-2);font-variant-numeric:tabular-nums}
+.exp-mt i{font-style:normal;margin-left:8px}
+.exp-ac{display:inline-flex;gap:4px;flex:none;opacity:.35}
+.exp-it:hover .exp-ac,.exp-it:focus-within .exp-ac{opacity:1}
+@media (max-width:700px){.exp-mt,.exp-onde{display:none}.exp-ac{opacity:1}}
+.exp-selo{flex:none;width:36px;text-align:center;font-size:10px;font-weight:800;letter-spacing:.03em;border-radius:5px;padding:3px 0;background:var(--sup-3);color:var(--tx-2)}
+.exp-selo.t-pdf{background:#fde3e0;color:#b3261e}
+.exp-selo.t-xls,.exp-selo.t-csv{background:#dff3e4;color:#1d7a3a}
+.exp-selo.t-doc{background:#dfe9fb;color:#1f55b8}
+.exp-selo.t-ppt{background:#fde8d9;color:#b54a0b}
+.exp-selo.t-img{background:#efe3fa;color:#6b2fa3}
+.exp-h{font-family:var(--titulo);font-size:15px;margin:18px 0 8px}
+.exp-h:first-child{margin-top:0}
+.exp-h small{font-family:var(--corpo);font-weight:500;color:var(--tx-2);font-size:12.5px;margin-left:6px}
+.exp-ats{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.exp-at{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid var(--sup-3);background:transparent;color:inherit;border-radius:12px;padding:10px 12px;cursor:pointer;font:inherit;min-width:0}
+.exp-at:hover{border-color:var(--laranja);background:var(--laranja-suave)}
+.exp-at>span:last-child{display:grid;min-width:0}
+.exp-at b{font-size:13.5px}
+.exp-at small{font-size:11.5px;color:var(--tx-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exp-vazio{color:var(--tx-2);font-size:13.5px;margin:8px 2px}
+.exp-aviso{background:var(--av-bg);border-radius:8px;padding:6px 10px;font-size:13px;margin:0 0 8px}
+.exp-aj{display:grid;gap:8px;background:var(--sup-2);border-radius:10px;padding:12px 14px;font-size:13.5px}
+.exp-aj .exp-sub{margin-left:24px;color:var(--tx-2)}
+.exp-aj select,.exp-base input{font:inherit;border:1px solid var(--sup-3);border-radius:8px;padding:4px 8px;background:transparent;color:inherit}
+.exp-base{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.exp-base input{flex:1 1 260px}
+.exp-dica{margin:0;font-size:12.5px;color:var(--tx-2)}
+.exp-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--acento);color:var(--acento-tx);padding:10px 16px;border-radius:10px;font-size:13.5px;max-width:min(560px,90vw);opacity:0;pointer-events:none;transition:.2s;z-index:9999;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.exp-toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* peças da conexão que no site de trabalho vêm de outro módulo */
+#vExplorar .cx-ic{width:52px;height:52px;border-radius:14px;background:var(--laranja-suave);color:var(--laranja);display:flex;align-items:center;justify-content:center;flex:none}
+#vExplorar .cx-tx{flex:1 1 320px}#vExplorar .cx-tx h2{font-family:var(--titulo);font-size:18px;margin:0 0 4px}#vExplorar .cx-tx h2 small{font-family:var(--corpo);font-weight:500;font-size:13px;color:var(--tx-3);margin-left:8px}
+#vExplorar .cx-tx p{margin:0;color:var(--tx-2);font-size:14px}
+#vExplorar .cx-dica{margin:0;font-size:12.5px;color:var(--tx-3)}
+#vExplorar .cx-msg{margin-top:10px;border-radius:10px;padding:10px 14px;font-size:13.5px}#vExplorar .cx-msg.av{background:var(--av-bg)}#vExplorar .cx-msg.er{background:var(--er-bg)}
+#vExplorar .cx-faixa{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#vExplorar .card{background:var(--sup);border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+#vExplorar .exp-mini{background:var(--sup)}
+.nav button[data-v="explorar"] svg{width:16px;height:16px}
+
 </style>
 </head>
 <body>
@@ -383,6 +472,7 @@ footer .priv{display:flex;gap:6px;align-items:center}
     </section>
   </div>
 </div>
+<section id="vExplorar" class="view" aria-label="Explorar SEG" hidden></section>
 <div class="view" id="vJuntar" hidden>
 <div class="grid">
   <div>
@@ -495,10 +585,10 @@ footer .priv{display:flex;gap:6px;align-items:center}
 <div id="tip" role="tooltip"></div>
 <footer>
   <span class="priv"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Os arquivos são processados só neste computador. Nada é enviado para a internet.</span>
-  <span>Desenvolvido por Arthur Tureck · v6.2 · github.com/ArthurTureck</span>
+  <span>Desenvolvido por Arthur Tureck · v6.3 · github.com/ArthurTureck</span>
 </footer>
 
-<script>/*PDFLIB*/</script>
+<script>window.__H0=location.hash;/*PDFLIB*/</script>
 <script>/*PDFJS*/</script>
 <script>/*PDFWORKER*/</script>
 <script>/*TESSLIB*/</script>
@@ -1668,7 +1758,8 @@ async function montarDemo(){
   const r=demoRand(2026),pick=a=>a[Math.floor(r()*a.length)],int=(a,z)=>a+Math.floor(r()*(z-a+1));
   const hoje=new Date(),ano=hoje.getFullYear(),ultMes=hoje.getMonth()+1;
   let reg=0;const files=[],add=async(cam,titulo,linhas,pag)=>{const bytes=await demoPdf(null,null,titulo,[...linhas,`Registro de exemplo nº ${++reg}`],pag);
-    const f=new File([bytes],cam.split("/").pop(),{type:"application/pdf",lastModified:Date.now()});
+    const md=cam.match(/\/(\d+)\. [^/]+\/(\d\d) - /),quando=md?Math.min(Date.now(),new Date(ano,+md[1]-1,+md[2],8+Math.floor(r()*9),Math.floor(r()*60)).getTime()+864e5):Date.now();
+    const f=new File([bytes],cam.split("/").pop(),{type:"application/pdf",lastModified:quando});
     Object.defineProperty(f,"webkitRelativePath",{value:"Seguranca do Trabalho (exemplo)/"+cam});files.push(f);};
   let n=100;
   for(let m=1;m<=ultMes;m++){
@@ -1681,9 +1772,405 @@ async function montarDemo(){
   }
   D.demo=true;D.fontes=D.fontes.filter(f=>f.modo!=="demo");D.fontes.push({id:"demo",nome:"Pasta de exemplo (fictícia)",files,modo:"demo",ok:true});
   await varrer(true);if(b){b.disabled=false;b.textContent="Ver com dados de exemplo";}
+  try{if(window.__EX)await window.__EX.usar(await demoMontarSeg(files));}catch(e){console.warn("explorar demo",e);}
   const c=$("#dConteudo");if(c&&!$("#demoAviso")){const a=document.createElement("p");a.id="demoAviso";a.className="demo-aviso";
-    a.innerHTML="<b>Modo demonstração.</b> Todos os documentos são fictícios e foram gerados agora no seu navegador. Na aba <b>Juntar e classificar</b>, escolha DDS e clique em puxar os arquivos do mês para ver o relatório semanal.";c.prepend(a);}
+    a.innerHTML="<b>Modo demonstração.</b> Todos os documentos são fictícios e foram gerados agora no seu navegador. Na aba <b>Juntar e classificar</b>, escolha DDS e clique em puxar os arquivos do mês para ver o relatório semanal. Em <b>Explorar SEG</b>, navegue e busque nas pastas de exemplo.";c.prepend(a);}
 }
+
+/* ---------- Explorar SEG: pastas do setor na versão pública ----------
+   Os nomes abaixo são genéricos. No site de trabalho eles vêm de js/31-caminhos.js. */
+var CAM_RAIZ_NOME="1.0 Segurança do Trabalho";
+var CAM_TPL={PT:"PT\\{ano}",DDS:"DDS\\{ano}",QA:"Quase Acidente",TREINO:"Treinamentos\\Certificados\\Controle de treinamentos.xlsx",HIDRANTES:"Manutenção\\Hidrantes\\Controle de limpeza {ano}.xlsx"};
+
+/* ---------- Explorar SEG (vem do site de trabalho, v8.27+) ---------- */
+/* ---------- Explorar SEG (v8.27) ----------
+   Página para navegar e buscar arquivos na pasta SEG inteira, sem sair do site.
+   - Conecta a pasta SEG uma vez (fica guardada no IndexedDB: exp_seg). Se o resto do site ainda não
+     estiver conectado, aproveita e conecta também (a conexão única acha a "1.0 Segurança do Trabalho" dentro da SEG).
+   - Árvore de pastas que só lê a pasta que a pessoa abre (não trava o drive de rede).
+   - Busca por nome em tudo: monta um índice (só nomes e caminhos) e guarda neste navegador (exp_indice).
+   - Atalhos das pastas do setor (vêm do CAM_TPL), favoritos (exp_fav) e "o que chegou por último".
+   - Abrir: PDF/imagem numa aba nova; Excel/Word/PowerPoint direto no programa (links ms-excel:/ms-word:);
+     pasta no Explorador (search-ms:). Sempre tem "Copiar caminho" como plano B.
+   Só LÊ. Nunca grava, renomeia ou apaga nada na SEG. */
+(function(){
+const raizEl=document.getElementById("vExplorar");if(!raizEl)return;
+const E_=typeof esc==="function"?esc:s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const N=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const LS={get(k,d){try{const v=localStorage.getItem("exp_"+k);return v===null?d:JSON.parse(v);}catch(e){return d;}},
+  set(k,v){try{localStorage.setItem("exp_"+k,JSON.stringify(v));}catch(e){}}};
+const DB={get:async k=>{try{return typeof IDB!=="undefined"?await IDB.get(k):undefined;}catch(e){return undefined;}},
+  set:async(k,v)=>{try{if(typeof IDB!=="undefined")await IDB.set(k,v);}catch(e){}}};
+const SEP="\\";
+const junta=(p,n)=>p?p+SEP+n:n;
+const pai=p=>{const i=p.lastIndexOf(SEP);return i<0?"":p.slice(0,i);};
+const nomeDe=p=>{const i=p.lastIndexOf(SEP);return i<0?p:p.slice(i+1);};
+const extDe=n=>(String(n).match(/\.([a-z0-9]+)$/i)||["",""])[1].toLowerCase();
+const oculto=n=>/^(~\$|\.|desktop\.ini$|thumbs\.db$)/i.test(n);
+const ANO=new Date().getFullYear();
+const LIMITE_INDICE=400000;
+
+/* tipos de arquivo: como abre e que selo mostra */
+const TIPO={pdf:["PDF","aba"],png:["IMG","aba"],jpg:["IMG","aba"],jpeg:["IMG","aba"],gif:["IMG","aba"],webp:["IMG","aba"],bmp:["IMG","aba"],txt:["TXT","aba"],
+  xlsx:["XLS","ms-excel"],xlsm:["XLS","ms-excel"],xls:["XLS","ms-excel"],csv:["CSV","ms-excel"],
+  docx:["DOC","ms-word"],doc:["DOC","ms-word"],pptx:["PPT","ms-powerpoint"],ppt:["PPT","ms-powerpoint"],
+  zip:["ZIP",""],rar:["ZIP",""],msg:["MSG",""],eml:["MSG",""],mp4:["VID","aba"],dwg:["DWG",""]};
+const tipoDe=n=>TIPO[extDe(n)]||[extDe(n).toUpperCase().slice(0,4)||"ARQ",""];
+
+const EX={seg:null,ok:false,api:typeof window.showDirectoryPicker==="function",
+  atual:"",abertos:new Set([""]),dirs:new Map(),listas:new Map(),meta:new Map(),
+  indice:null,norm:[],indexando:false,parar:false,idxErros:0,
+  busca:"",filtro:"",ordem:LS.get("ordem","nome"),fav:LS.get("fav",[]),
+  office:LS.get("office",false),jeito:LS.get("jeito","A"),explorer:LS.get("explorer",false),
+  base:LS.get("base",""),recentes:null,carregandoRec:false,msg:null,ajustes:false};
+window.__EX=EX;   // usado pelos testes
+
+/* ---------- leitura das pastas ---------- */
+async function perm(h,pedir){if(!h)return false;if(h.virtual)return true;
+  try{if((await h.queryPermission({mode:"read"}))==="granted")return true;return !!pedir&&(await h.requestPermission({mode:"read"}))==="granted";}catch(e){return false;}}
+async function dirDe(p){
+  if(!p)return EX.seg;
+  if(EX.dirs.has(p))return EX.dirs.get(p);
+  const h=await (await dirDe(pai(p))).getDirectoryHandle(nomeDe(p));
+  EX.dirs.set(p,h);return h;}
+const cmp=new Intl.Collator("pt-BR",{numeric:true,sensitivity:"base"}).compare;
+async function listar(p){
+  if(EX.listas.has(p))return EX.listas.get(p);
+  const d=await dirDe(p),L=[];
+  for await(const [n,h] of d.entries()){if(oculto(n))continue;L.push({n,d:h.kind==="directory"});if(h.kind==="directory")EX.dirs.set(junta(p,n),h);}
+  L.sort((a,b)=>(b.d-a.d)||cmp(a.n,b.n));
+  EX.listas.set(p,L);return L;}
+async function metaDe(p){
+  if(EX.meta.has(p))return EX.meta.get(p);
+  let m={s:null,m:null};
+  try{const f=await (await (await dirDe(pai(p))).getFileHandle(nomeDe(p))).getFile();m={s:f.size,m:f.lastModified};}catch(e){}
+  EX.meta.set(p,m);return m;}
+/* roda tarefas com no máximo "n" ao mesmo tempo (drive de rede não gosta de 500 pedidos juntos) */
+async function emLotes(itens,n,fn){let i=0;const w=async()=>{while(i<itens.length){const x=itens[i++];await fn(x);}};
+  await Promise.all(Array.from({length:Math.min(n,itens.length)},w));}
+
+/* ---------- caminho completo neste PC ---------- */
+function baseSeg(){
+  if(EX.base)return EX.base.replace(/[\\/]+$/,"");
+  let b="";try{if(typeof camBase==="function")b=camBase();}catch(e){}
+  const i=N(b).lastIndexOf("1 0 seguranca do trabalho");
+  if(b&&i>=0){const m=b.replace(/[\\/]+$/,"").split(/[\\/]/);m.pop();if(m.length)return m.join(SEP);}
+  return "C:\\Exemplo\\SEG";}
+const absoluto=p=>baseSeg()+(p?SEP+p:"");
+const urlArquivo=a=>"file:///"+a.replace(/\\/g,"/").split("/").map((s,i)=>i===0&&/^[a-z]:$/i.test(s)?s:encodeURIComponent(s)).join("/");
+
+/* ---------- atalhos (pastas do setor, do CAM_TPL) ---------- */
+const NOMES_AT={PT:"PTs escaneadas",DDS:"DDS e Treinamentos",QA:"Quase Acidentes e Melhorias",IPS:"IPS",TREINO:"Certificados de Treinamento",HIDRANTES:"Hidrantes",ARMARIOS:"Painel de Controle SSO"};
+async function acharSeg(p,seg){   // acha o segmento dentro da pasta p: nome exato, sem acento/maiúscula ou outro ano
+  const alvo=seg.replace(/\{ano\}/g,ANO);let L;try{L=(await listar(p)).filter(x=>x.d);}catch(e){return null;}
+  let x=L.find(x=>x.n===alvo)||L.find(x=>N(x.n)===N(alvo));if(x)return x.n;
+  if(seg.includes("{ano}")){const re=new RegExp("^"+N(seg.replace(/\{ano\}/g," zzanozz ")).replace(/zzanozz/g,"(20\\d\\d)")+"$");
+    const c=L.map(x=>{const m=N(x.n).match(re);return m?{n:x.n,a:+m[1]}:null;}).filter(Boolean).filter(x=>x.a<=ANO).sort((a,b)=>b.a-a.a);
+    if(c.length)return c[0].n;}
+  return null;}
+async function seguirModelo(segs){let p="";for(const s of segs){const n=await acharSeg(p,s);if(n===null)return null;p=junta(p,n);}return p;}
+let atalhos=null;
+async function montarAtalhos(){
+  const raizNome=typeof CAM_RAIZ_NOME!=="undefined"?CAM_RAIZ_NOME:"1.0 Segurança do Trabalho";
+  const tpl=typeof CAM_TPL!=="undefined"?CAM_TPL:{};const out=[];
+  const r=await seguirModelo([raizNome]);if(r!==null)out.push({nome:raizNome.replace(/^1\.0\s*/,""),p:r});
+  for(const k of Object.keys(NOMES_AT)){if(!tpl[k])continue;let segs=tpl[k].split("\\");
+    if(/\.[a-z0-9]{3,4}$/i.test(segs[segs.length-1]))segs=segs.slice(0,-1);
+    const p=await seguirModelo([raizNome,...segs]);if(p!==null&&!out.some(o=>o.p===p))out.push({nome:NOMES_AT[k],p});}
+  atalhos=out;}
+
+/* ---------- o que chegou por último (PT, DDS, QA do ano) ---------- */
+async function carregarRecentes(){
+  if(EX.carregandoRec||!atalhos)return;EX.carregandoRec=true;render();
+  const alvos=atalhos.filter(a=>["PTs escaneadas","DDS e Treinamentos","Quase Acidentes e Melhorias"].includes(a.nome)).map(a=>a.p);
+  const arqs=[];
+  async function varre(p,prof){if(arqs.length>2000)return;let L;try{L=await listar(p);}catch(e){return;}
+    for(const x of L){const q=junta(p,x.n);if(x.d){if(prof<2)await varre(q,prof+1);}else arqs.push(q);}}
+  for(const a of alvos)await varre(a,0);
+  await emLotes(arqs,12,metaDe);
+  EX.recentes=arqs.map(p=>({p,m:EX.meta.get(p).m||0})).sort((a,b)=>b.m-a.m).slice(0,12);
+  EX.carregandoRec=false;render();}
+
+/* ---------- índice para a busca ---------- */
+async function carregarIndice(){const x=await DB.get("exp_indice");if(x&&x.itens&&EX.seg&&x.seg===EX.seg.name){EX.indice=x;EX.norm=[];}}
+async function indexar(){
+  if(EX.indexando||!EX.ok)return;EX.indexando=true;EX.parar=false;EX.idxErros=0;
+  const itens=[],fila=[{h:EX.seg,p:""}];let ini=0,ativos=0;
+  EX.indice={itens,quando:Date.now(),seg:EX.seg.name,completo:false,parcial:true};EX.norm=[];
+  const tick=setInterval(()=>renderStatus(),400);render();
+  await new Promise(fim=>{
+    const prox=()=>{
+      if(EX.parar||itens.length>=LIMITE_INDICE){fila.length=ini;}
+      while(ativos<6&&ini<fila.length){const t=fila[ini++];ativos++;
+        (async()=>{try{for await(const [n,h] of t.h.entries()){if(oculto(n))continue;const p=junta(t.p,n);
+              if(h.kind==="directory"){itens.push(p+SEP);fila.push({h,p});}else itens.push(p);}}
+          catch(e){EX.idxErros++;}
+          finally{ativos--;prox();}})();}
+      if(!ativos&&ini>=fila.length)fim();};
+    prox();});
+  clearInterval(tick);
+  EX.indice.completo=!EX.parar&&itens.length<LIMITE_INDICE;EX.indice.parcial=false;EX.indexando=false;
+  await DB.set("exp_indice",{itens,quando:EX.indice.quando,seg:EX.indice.seg,completo:EX.indice.completo});
+  render();}
+function buscar(q){
+  const toks=N(q).split(" ").filter(Boolean);if(!toks.length||!EX.indice)return [];
+  const it=EX.indice.itens;for(let i=EX.norm.length;i<it.length;i++)EX.norm.push(N(it[i]));
+  const res=[];
+  for(let i=0;i<it.length;i++){const s=EX.norm[i];if(!toks.every(t=>s.includes(t)))continue;
+    const ehDir=it[i].endsWith(SEP),p=ehDir?it[i].slice(0,-1):it[i],nn=N(nomeDe(p));
+    let sc=0;for(const t of toks)if(nn.includes(t))sc+=3;if(toks.every(t=>nn.includes(t)))sc+=5;if(nn.startsWith(toks[0]))sc+=2;if(ehDir)sc+=1;
+    res.push({p,d:ehDir,sc});}
+  res.sort((a,b)=>b.sc-a.sc||a.p.length-b.p.length);
+  return res;}
+
+/* ---------- ações ---------- */
+function aviso(t){let el=document.getElementById("expToast");if(!el){el=document.createElement("div");el.id="expToast";el.className="exp-toast";document.body.appendChild(el);}
+  el.innerHTML=t;el.classList.add("on");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("on"),3200);}
+async function copiar(t){let ok=false;try{await navigator.clipboard.writeText(t);ok=true;}catch(e){}
+  if(!ok){const a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{ok=document.execCommand("copy");}catch(e){}a.remove();}
+  aviso(ok?"Caminho copiado. No Explorador (Windows + E), clique na barra de endereço, cole e aperte Enter.":"Não consegui copiar. Caminho: "+E_(t));}
+function abrirPasta(p){const a=absoluto(p);
+  if(!EX.explorer){copiar(a);return;}
+  EX.ultimoLink="search-ms:displayname="+encodeURIComponent(nomeDe(p)||"SEG")+"&crumb=location:"+encodeURIComponent(a);location.href="search-ms:displayname="+encodeURIComponent(nomeDe(p)||"SEG")+"&crumb=location:"+encodeURIComponent(a);
+  aviso("Abrindo no Explorador… Se o navegador perguntar, clique em <b>Abrir</b>. Não abriu? Use <b>Copiar caminho</b>.");}
+async function abrirArquivo(p){
+  const [,modo]=tipoDe(nomeDe(p));
+  if(modo==="aba"){const w=window.open("about:blank","_blank");   // abre já no clique, senão o navegador bloqueia
+    try{const f=await (await (await dirDe(pai(p))).getFileHandle(nomeDe(p))).getFile();
+      const u=URL.createObjectURL(f);   // a aba nova não pode ir direto para o blob (site aberto por file://), mas pode mostrar ele num quadro
+      if(!w){aviso("O navegador bloqueou a aba nova. Libere os pop-ups deste site e tente de novo.");return;}
+      w.document.write(`<!DOCTYPE html><meta charset="utf-8"><title>${E_(f.name)}</title><style>html,body{margin:0;height:100%;background:#525659}iframe{border:0;width:100%;height:100%;display:block}</style><iframe src="${u}"></iframe>`);
+      w.document.close();}
+    catch(e){if(w)w.close();aviso("Não consegui abrir: "+E_(e.message||e.name||e));}
+    return;}
+  if(modo&&EX.office){const a=absoluto(p);EX.ultimoLink=modo+":ofe|u|"+(EX.jeito==="A"?urlArquivo(a):a);location.href=EX.ultimoLink;
+    aviso("Abrindo no "+({"ms-excel":"Excel","ms-word":"Word","ms-powerpoint":"PowerPoint"}[modo])+"… Se o navegador perguntar, clique em <b>Abrir</b>.");return;}
+  copiar(absoluto(p));}
+function favoritar(p){const i=EX.fav.indexOf(p);if(i>=0)EX.fav.splice(i,1);else EX.fav.push(p);LS.set("fav",EX.fav);render();}
+async function irPara(p){
+  EX.atual=p;EX.busca="";EX.filtro="";
+  const partes=p?p.split(SEP):[];let q="";EX.abertos.add("");
+  try{for(const s of partes){await listar(q);q=junta(q,s);EX.abertos.add(q);}await listar(p);EX.msg=null;}
+  catch(e){EX.msg={c:"er",t:`Não achei a pasta <b>${E_(p)}</b>. Ela pode ter mudado de nome ou de lugar. Clique em <b>Atualizar</b>.`};EX.atual=pai(p);}
+  render();const m=document.getElementById("expMain");if(m)m.scrollTop=0;}
+
+/* ---------- conectar ---------- */
+async function conectar(){
+  if(!EX.api){EX.msg={c:"er",t:"Este navegador não deixa o site ler pastas. Abra o site no <b>Chrome</b> ou no <b>Edge</b> atualizados."};render();return;}
+  let h;try{h=await window.showDirectoryPicker({id:"exp-seg",mode:"read"});}catch(e){if(e&&e.name!=="AbortError"){EX.msg={c:"er",t:"O navegador não abriu a janela de pastas ("+E_(e.name||"erro")+")."};render();}return;}
+  await usar(h);}
+async function usar(h){
+  EX.seg=h;EX.ok=true;limpar();EX.msg=null;EX.indice=null;EX.recentes=null;
+  let filhos=[];try{filhos=(await listar("")).filter(x=>x.d).map(x=>N(x.n));}catch(e){}
+  if(N(h.name).includes("seguranca do trabalho"))EX.msg={c:"av",t:`Você escolheu a pasta <b>${E_(h.name)}</b>. Para ver a SEG inteira, clique em <b>Trocar pasta</b> e escolha a pasta de cima (<b>SEG</b>).`};
+  else if(!filhos.some(n=>n.includes("seguranca do trabalho")))EX.msg={c:"av",t:`Conectei <b>${E_(h.name)}</b>, mas não achei a pasta "1.0 Segurança do Trabalho" dentro dela. Se não for a SEG, clique em <b>Trocar pasta</b>.`};
+  if(!h.virtual)await DB.set("exp_seg",h);
+  try{const cx=window.__CX;if(cx&&!cx.raiz&&typeof cx.usarPasta==="function"&&!h.virtual)cx.usarPasta(h);}catch(e){}   // aproveita e liga o resto do site
+  await montarAtalhos();await carregarIndice();
+  const velho=EX.indice&&Date.now()-EX.indice.quando>7*864e5;
+  render();if(!EX.indice||velho)indexar();carregarRecentes();}
+async function reconectar(){if(await perm(EX.seg,true)){await usar(EX.seg);}else{EX.msg={c:"av",t:"O navegador não liberou. Clique de novo e escolha <b>Permitir</b> (ou <b>Permitir em todas as visitas</b>)."};render();}}
+function limpar(){EX.dirs=new Map();EX.listas=new Map();EX.meta=new Map();EX.atual="";EX.abertos=new Set([""]);}
+async function atualizar(){const p=EX.atual;EX.listas=new Map();EX.meta=new Map();EX.dirs=new Map();EX.recentes=null;await irPara(p);carregarRecentes();}
+
+/* ---------- tela ---------- */
+const IC={pasta:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M10 4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>',
+  estrela:'<svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
+  lupa:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>'};
+const tam=s=>s==null?"":s<1024?s+" B":s<1048576?Math.round(s/1024)+" KB":(s/1048576).toFixed(1).replace(".",",")+" MB";
+const data=m=>m?new Date(m).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric"}):"";
+const selo=n=>{const [t]=tipoDe(n);return `<span class="exp-selo t-${E_(t.toLowerCase())}">${E_(t)}</span>`;};
+function trilha(p){const partes=p?p.split(SEP):[];let q="";
+  const itens=[`<button class="exp-tr" data-ir="">${E_(EX.seg?EX.seg.name:"SEG")}</button>`];
+  for(const s of partes){q=junta(q,s);itens.push(`<button class="exp-tr" data-ir="${E_(q)}">${E_(s)}</button>`);}
+  return itens.join('<span class="exp-sep">›</span>');}
+const semSub=q=>{const L=EX.listas.get(q);return !!L&&!L.some(x=>x.d);};   // pasta sem subpasta: sem setinha
+function arvore(p,nivel){const L=EX.listas.get(p);if(!L)return "";
+  return L.filter(x=>x.d).map(x=>{const q=junta(p,x.n),ab=EX.abertos.has(q);
+    return `<li><div class="exp-no${q===EX.atual?" at":""}" style="--n:${nivel}">${semSub(q)?'<span class="exp-tg"></span>':`<button class="exp-tg" data-tg="${E_(q)}" aria-label="${ab?"Fechar":"Abrir"}">${ab?"▾":"▸"}</button>`}<button class="exp-nn" data-ir="${E_(q)}" title="${E_(x.n)}">${E_(x.n)}</button></div>${ab?`<ul>${arvore(q,nivel+1)}</ul>`:""}</li>`;}).join("");}
+function linhaItem(p,d,extra){const n=nomeDe(p),m=EX.meta.get(p),fav=EX.fav.includes(p);
+  return `<li class="exp-it${d?" dir":""}" data-p="${E_(p)}" data-d="${d?1:0}">
+    <button class="exp-ab" data-abrir title="${d?"Entrar na pasta":"Abrir"}">${d?`<span class="exp-ic">${IC.pasta}</span>`:selo(n)}<span class="exp-nm">${E_(n)}</span></button>
+    ${extra||""}<span class="exp-mt">${d?"":`${data(m&&m.m)}<i>${tam(m&&m.s)}</i>`}</span>
+    <span class="exp-ac">${d?`<button class="exp-mini${fav?" on":""}" data-fav title="${fav?"Tirar dos favoritos":"Favoritar"}">${IC.estrela}</button><button class="exp-mini" data-explorer title="Abrir no Explorador">Explorador</button>`
+      :`<button class="exp-mini" data-pasta title="Ir para a pasta onde ele está">Pasta</button>`}<button class="exp-mini" data-copiar title="Copiar o caminho completo">Copiar caminho</button></span></li>`;}
+function telaPasta(){
+  const L=EX.listas.get(EX.atual)||[];const f=N(EX.filtro);
+  let it=L.filter(x=>!f||N(x.n).includes(f));
+  if(EX.ordem==="data"){const ds=it.filter(x=>x.d),fs=it.filter(x=>!x.d);fs.sort((a,b)=>((EX.meta.get(junta(EX.atual,b.n))||{}).m||0)-((EX.meta.get(junta(EX.atual,a.n))||{}).m||0));it=[...ds,...fs];}
+  const nd=L.filter(x=>x.d).length,na=L.length-nd;
+  const fav=EX.fav.includes(EX.atual)&&EX.atual;
+  return `<div class="exp-cab"><nav class="exp-trilha">${trilha(EX.atual)}</nav>
+    <span class="exp-cab-ac">${EX.atual?`<button class="exp-mini${fav?" on":""}" data-fav-atual>${IC.estrela} ${fav?"Favorita":"Favoritar"}</button>`:""}<button class="exp-mini" data-explorer-atual>Abrir no Explorador</button><button class="exp-mini" data-copiar-atual>Copiar caminho</button></span></div>
+    <div class="exp-barra"><input class="exp-filtro" id="expFiltro" placeholder="Filtrar nesta pasta…" value="${E_(EX.filtro)}" spellcheck="false">
+      <label class="exp-ord">Ordem <select id="expOrdem"><option value="nome"${EX.ordem==="nome"?" selected":""}>Nome</option><option value="data"${EX.ordem==="data"?" selected":""}>Mais recentes primeiro</option></select></label>
+      <span class="exp-cont">${nd} pasta${nd===1?"":"s"} · ${na} arquivo${na===1?"":"s"}</span></div>
+    ${it.length?`<ul class="exp-lista">${it.map(x=>linhaItem(junta(EX.atual,x.n),x.d)).join("")}</ul>`:`<p class="exp-vazio">${L.length?"Nada com esse nome nesta pasta.":"Pasta vazia."}</p>`}`;}
+function telaInicio(){
+  const fav=EX.fav.map(p=>`<button class="exp-at" data-ir="${E_(p)}"><span class="exp-ic">${IC.pasta}</span><span><b>${E_(nomeDe(p))}</b><small>${E_(pai(p).split(SEP).slice(-1)[0]||"SEG")}</small></span></button>`).join("");
+  const at=(atalhos||[]).map(a=>`<button class="exp-at" data-ir="${E_(a.p)}"><span class="exp-ic">${IC.pasta}</span><span><b>${E_(a.nome)}</b><small>${E_(nomeDe(a.p))}</small></span></button>`).join("");
+  const rec=EX.carregandoRec?`<p class="exp-vazio"><span class="ocrchip"><i></i>Vendo o que chegou…</span></p>`
+    :EX.recentes&&EX.recentes.length?`<ul class="exp-lista">${EX.recentes.map(r=>linhaItem(r.p,false,`<span class="exp-onde">${E_(pai(r.p).split(SEP).slice(-2).join(" › "))}</span>`)).join("")}</ul>`
+    :`<p class="exp-vazio">Nada por aqui ainda.</p>`;
+  return `<h3 class="exp-h">Atalhos do setor</h3><div class="exp-ats">${at||'<p class="exp-vazio">Procurando as pastas do setor…</p>'}</div>
+    ${fav?`<h3 class="exp-h">Favoritos</h3><div class="exp-ats">${fav}</div>`:""}
+    <h3 class="exp-h">Chegou por último <small>PTs, DDS e Quase Acidentes</small></h3>${rec}
+    <h3 class="exp-h">Tudo na SEG</h3>${telaPasta()}`;}
+function telaBusca(){
+  const r=buscar(EX.busca),mostra=r.slice(0,300);
+  const st=EX.indexando?`<p class="exp-aviso">Ainda montando o índice (${EX.indice.itens.length.toLocaleString("pt-BR")} itens até agora): pode faltar resultado.</p>`:"";
+  return `<div class="exp-cab"><span class="exp-trilha"><b>${r.length.toLocaleString("pt-BR")}</b> resultado${r.length===1?"":"s"} para “${E_(EX.busca)}”${r.length>300?" (mostrando os 300 melhores)":""}</span>
+    <span class="exp-cab-ac"><button class="exp-mini" data-limpar-busca>Limpar busca</button></span></div>${st}
+    ${mostra.length?`<ul class="exp-lista">${mostra.map(x=>linhaItem(x.p,x.d,`<span class="exp-onde">${E_(pai(x.p).split(SEP).slice(-3).join(" › ")||"SEG")}</span>`)).join("")}</ul>`
+      :`<p class="exp-vazio">${EX.indice?"Não achei nada. Tente menos palavras ou só um pedaço do nome (ex.: <b>extintor</b>, <b>pt 03</b>).":"O índice ainda não foi montado."}</p>`}`;}
+function statusIndice(){
+  if(!EX.ok)return "";
+  if(EX.indexando)return `<span class="exp-st"><span class="ocrchip"><i></i>Montando o índice da busca · ${EX.indice.itens.length.toLocaleString("pt-BR")} itens</span><button class="exp-mini" data-parar>Parar</button></span>`;
+  if(!EX.indice)return `<span class="exp-st"><button class="exp-mini" data-indexar>Montar índice da busca</button></span>`;
+  const dias=Math.floor((Date.now()-EX.indice.quando)/864e5);
+  return `<span class="exp-st">Busca em ${EX.indice.itens.length.toLocaleString("pt-BR")} itens · atualizada ${dias<1?"hoje":dias===1?"ontem":`há ${dias} dias`}${EX.indice.completo===false?" (incompleta)":""} <button class="exp-mini" data-indexar>Atualizar índice</button></span>`;}
+function renderStatus(){const el=document.getElementById("expStatus");if(el)el.innerHTML=statusIndice();
+  if(EX.busca&&EX.indexando){const m=document.getElementById("expMain");if(m)m.innerHTML=telaBusca();}}
+function telaAjustes(){return `<div class="exp-aj">
+    <label><input type="checkbox" id="expOffice"${EX.office?" checked":""}> Abrir Excel, Word e PowerPoint direto no programa</label>
+    <label class="exp-sub">Jeito do link <select id="expJeito"><option value="A"${EX.jeito==="A"?" selected":""}>A (file:///)</option><option value="B"${EX.jeito==="B"?" selected":""}>B (caminho direto)</option></select></label>
+    <label><input type="checkbox" id="expExplorer"${EX.explorer?" checked":""}> Abrir pastas no Explorador de Arquivos</label>
+    <label class="exp-base">Neste computador a SEG fica em <input id="expBase" value="${E_(baseSeg())}" spellcheck="false"><button class="exp-mini" data-base>Salvar</button></label>
+    <p class="exp-dica">Se um botão não abrir nada, desligue a opção aqui: aí ele copia o caminho pra colar no Explorador. Fica salvo só neste navegador.</p></div>`;}
+function render(){
+  let h;
+  if(!EX.seg){
+    h=`<div class="card exp-con"><div class="cx-ic">${IC.pasta}</div><div class="cx-tx"><h2>Explorar a SEG <small>conecte uma vez só</small></h2>
+      <p>Clique no botão e escolha a pasta <b>SEG</b> (a pasta de cima, onde ficam as pastas do setor). Daí dá pra navegar, buscar qualquer arquivo pelo nome e abrir sem sair do site.</p></div>
+      <div class="cx-ac"><button class="btn-grande" data-conectar>${IC.pasta}Escolher a pasta SEG</button></div>
+      <p class="cx-dica">O site só lê os arquivos, aqui no computador. Não muda nada nas pastas.</p>${msgHTML()}</div>`;}
+  else if(!EX.ok){
+    h=`<div class="card exp-con"><div class="cx-faixa pede"><span><b>De volta!</b> O navegador pede uma confirmação para ler a SEG de novo.</span>
+      <button class="btn-grande" data-reconectar>Reconectar (1 clique)</button></div>${msgHTML()}</div>`;}
+  else{
+    const corpo=EX.busca?telaBusca():EX.atual?telaPasta():telaInicio();
+    h=`<div class="card exp-topo"><div class="exp-busca">${IC.lupa}<input id="expBusca" placeholder="Buscar em toda a SEG pelo nome (ex.: extintor 2026, pt março)" value="${E_(EX.busca)}" spellcheck="false" autocomplete="off"></div>
+      <div class="exp-topo-l"><span id="expStatus">${statusIndice()}</span><span class="mini-btns"><button class="exp-mini" data-inicio>Início</button><button class="exp-mini" data-atualizar>Atualizar</button><button class="exp-mini" data-ajustes aria-expanded="${EX.ajustes}">Ajustes</button><button class="exp-mini" data-conectar>Trocar pasta</button></span></div>
+      ${EX.ajustes?telaAjustes():""}${msgHTML()}</div>
+      <div class="exp-corpo"><aside class="card exp-arv"><button class="exp-raiz${EX.atual===""?" at":""}" data-ir="">${IC.pasta} ${E_(EX.seg.name)}</button><ul>${arvore("",0)}</ul></aside>
+      <section class="card exp-main" id="expMain">${corpo}</section></div>`;}
+  const foco=document.activeElement&&document.activeElement.id,sel=foco&&document.activeElement.selectionStart;
+  raizEl.innerHTML=h;
+  if(foco){const el=document.getElementById(foco);if(el){el.focus();try{el.setSelectionRange(sel,sel);}catch(e){}}}
+  preencherMeta();}
+function msgHTML(){return EX.msg?`<div class="cx-msg ${EX.msg.c}" role="status">${EX.msg.t}</div>`:"";}
+/* tamanho e data dos arquivos que estão na tela (lê aos poucos) */
+let metaVez=0;
+async function preencherMeta(){const vez=++metaVez;
+  const ps=[...raizEl.querySelectorAll('.exp-it[data-d="0"]')].map(li=>li.dataset.p).filter(p=>!EX.meta.has(p)).slice(0,400);
+  if(!ps.length)return;
+  await emLotes(ps,12,async p=>{const m=await metaDe(p);if(vez!==metaVez)return;
+    const li=raizEl.querySelector(`.exp-it[data-p="${CSS.escape(p)}"] .exp-mt`);if(li)li.innerHTML=`${data(m.m)}<i>${tam(m.s)}</i>`;});
+  if(vez===metaVez&&EX.ordem==="data"&&!EX.busca)render();}
+
+/* ---------- cliques e teclas ---------- */
+raizEl.addEventListener("click",async e=>{
+  const b=e.target.closest("button");if(!b)return;const li=b.closest(".exp-it"),p=li&&li.dataset.p,d=li&&li.dataset.d==="1";
+  if(b.hasAttribute("data-conectar"))return conectar();
+  if(b.hasAttribute("data-reconectar"))return reconectar();
+  if(b.dataset.tg!==undefined){const q=b.dataset.tg;if(EX.abertos.has(q))EX.abertos.delete(q);else{EX.abertos.add(q);try{await listar(q);}catch(x){}}render();return;}
+  if(b.dataset.ir!==undefined)return irPara(b.dataset.ir);
+  if(b.hasAttribute("data-abrir"))return d?irPara(p):abrirArquivo(p);
+  if(b.hasAttribute("data-pasta"))return irPara(pai(p));
+  if(b.hasAttribute("data-copiar"))return copiar(absoluto(p));
+  if(b.hasAttribute("data-explorer"))return abrirPasta(p);
+  if(b.hasAttribute("data-fav"))return favoritar(p);
+  if(b.hasAttribute("data-fav-atual"))return favoritar(EX.atual);
+  if(b.hasAttribute("data-explorer-atual"))return abrirPasta(EX.atual);
+  if(b.hasAttribute("data-copiar-atual"))return copiar(absoluto(EX.atual));
+  if(b.hasAttribute("data-limpar-busca")){EX.busca="";render();return;}
+  if(b.hasAttribute("data-inicio")){EX.busca="";return irPara("");}
+  if(b.hasAttribute("data-atualizar"))return atualizar();
+  if(b.hasAttribute("data-ajustes")){EX.ajustes=!EX.ajustes;render();return;}
+  if(b.hasAttribute("data-indexar"))return indexar();
+  if(b.hasAttribute("data-parar")){EX.parar=true;return;}
+  if(b.hasAttribute("data-base")){const v=document.getElementById("expBase").value.trim().replace(/^"|"$/g,"");EX.base=v;LS.set("base",v);aviso("Salvo.");render();return;}});
+let tBusca;
+raizEl.addEventListener("input",e=>{
+  if(e.target.id==="expBusca"){clearTimeout(tBusca);const v=e.target.value;tBusca=setTimeout(()=>{EX.busca=v.trim();render();},250);}
+  if(e.target.id==="expFiltro"){EX.filtro=e.target.value;render();}});
+raizEl.addEventListener("change",e=>{
+  if(e.target.id==="expOrdem"){EX.ordem=e.target.value;LS.set("ordem",EX.ordem);render();}
+  if(e.target.id==="expOffice"){EX.office=e.target.checked;LS.set("office",EX.office);}
+  if(e.target.id==="expJeito"){EX.jeito=e.target.value;LS.set("jeito",EX.jeito);}
+  if(e.target.id==="expExplorer"){EX.explorer=e.target.checked;LS.set("explorer",EX.explorer);}});
+raizEl.addEventListener("keydown",e=>{
+  if(e.target.id==="expBusca"&&e.key==="Escape"){EX.busca="";render();}
+  if(e.target.id==="expBusca"&&e.key==="Enter"){clearTimeout(tBusca);EX.busca=e.target.value.trim();render();}});
+
+async function iniciar(){
+  const h=await DB.get("exp_seg");
+  if(h){EX.seg=h;EX.ok=await perm(h,false);if(EX.ok){await usar(h);return;}}
+  render();}
+
+/* ---------- botão "Explorar SEG" no menu de cima ----------
+   O 47-navegacao.js só conhece painel/juntar/dev; para não mexer nele, este módulo põe o próprio botão
+   no .nav (copiando o visual dos outros) e faz a troca de tela sozinho. Quando a pessoa clica num botão
+   antigo, o irPara() de lá esconde todas as .view, inclusive esta. */
+function marcaAtivo(btn){
+  const bs=[...document.querySelectorAll(".nav button[data-v]")];
+  const cls=["on","ativo","active","sel"].filter(c=>bs.some(x=>x.classList.contains(c)));
+  bs.forEach(b=>{const eu=b===btn;
+    if(b.hasAttribute("aria-selected"))b.setAttribute("aria-selected",eu?"true":"false");
+    if(b.hasAttribute("aria-current")||eu)eu?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current");
+    cls.forEach(c=>b.classList.toggle(c,eu));});}
+function mostrar(){
+  document.querySelectorAll(".view").forEach(v=>v.hidden=v!==raizEl);raizEl.hidden=false;
+  const b=document.querySelector('.nav button[data-v="explorar"]');if(b)marcaAtivo(b);
+  const t=document.getElementById("hTit"),s=document.getElementById("hSub");
+  if(t)t.innerHTML="Explorar <em>SEG</em>";if(s)s.textContent="Navegue e busque qualquer arquivo da pasta SEG sem sair do site.";
+  try{if(location.hash!=="#explorar")history.replaceState(null,"","#explorar");}catch(e){}
+  window.scrollTo(0,0);if(EX.ok&&!EX.indice&&!EX.indexando)indexar();}
+function botaoMenu(){
+  const nav=document.querySelector(".nav");if(!nav||nav.querySelector('[data-v="explorar"]'))return;
+  const mod=nav.querySelector('button[data-v="juntar"]')||nav.querySelector("button[data-v]");
+  const b=document.createElement("button");b.type="button";
+  if(mod){b.className=mod.className;["on","ativo","active","sel"].forEach(c=>b.classList.remove(c));if(mod.hasAttribute("aria-selected"))b.setAttribute("aria-selected","false");if(mod.getAttribute("role"))b.setAttribute("role",mod.getAttribute("role"));}
+  b.dataset.v="explorar";b.innerHTML=`${IC.pasta}<span>Explorar SEG</span>`;
+  b.addEventListener("click",e=>{e.preventDefault();e.stopImmediatePropagation();mostrar();},true);
+  (mod&&mod.parentNode===nav?mod:null)?mod.after(b):nav.appendChild(b);
+  nav.addEventListener("click",e=>{const o=e.target.closest("button[data-v]");if(o&&o!==b){raizEl.hidden=true;b.removeAttribute("aria-current");}});}
+EX.mostrar=mostrar;
+botaoMenu();
+if((window.__H0||location.hash)==="#explorar")setTimeout(mostrar,0);   // depois do irPara() do início, que mandaria para o painel
+EX.usar=usar;EX.buscar=buscar;EX.irPara=irPara;EX.indexar=indexar;EX.absoluto=absoluto;   // usados pelos testes
+window.__expIniciar=iniciar;
+render();iniciar();
+})();
+
+/* Demonstração: a pasta SEG de exemplo, com os mesmos PDFs fictícios do painel e algumas pastas a mais */
+function demoPastaVirtual(nome,no){
+  return {kind:"directory",name:nome,virtual:true,
+    async *entries(){for(const [n,v] of Object.entries(no))yield [n,v instanceof File?demoArqVirtual(v):demoPastaVirtual(n,v)];},
+    async getDirectoryHandle(n){const v=no[n];if(!v||v instanceof File)throw new DOMException("Não achei "+n,"NotFoundError");return demoPastaVirtual(n,v);},
+    async getFileHandle(n){const v=no[n];if(!(v instanceof File))throw new DOMException("Não achei "+n,"NotFoundError");return demoArqVirtual(v);},
+    async queryPermission(){return "granted";},async requestPermission(){return "granted";}};}
+function demoArqVirtual(f){return {kind:"file",name:f.name,async getFile(){return f;}};}
+async function demoMontarSeg(files){
+  const raiz={},seg={"1.0 Segurança do Trabalho":raiz};
+  const por=(cam,f)=>{const ps=cam.split("/");let n=raiz;for(const p of ps.slice(0,-1))n=n[p]||(n[p]={});n[ps[ps.length-1]]=f;};
+  for(const f of files)por(f.webkitRelativePath.split("/").slice(1).join("/"),f);
+  const ano=new Date().getFullYear(),extra=async(cam,tit,linhas,diasAtras)=>{const b=await demoPdf(0,0,tit,[...linhas,"Arquivo de exemplo"],1);
+    const nome=cam.split("/").pop(),f=new File([b],nome,{type:"application/pdf",lastModified:Date.now()-diasAtras*864e5});por(cam,f);};
+  const txt=(cam,conteudo,diasAtras)=>por(cam,new File([conteudo],cam.split("/").pop(),{lastModified:Date.now()-diasAtras*864e5}));
+  await extra("Treinamentos/Certificados/NR-35 Trabalho em Altura - Turma A.pdf","CERTIFICADO NR-35",["Turma A","Carga horária: 8 h"],40);
+  await extra("Treinamentos/Certificados/NR-33 Espaço Confinado - Turma B.pdf","CERTIFICADO NR-33",["Turma B","Carga horária: 16 h"],75);
+  txt("Treinamentos/Certificados/Controle de treinamentos.xlsx","planilha de exemplo",9);
+  await extra("Manutenção/Extintores/Inspeção de extintores - "+ano+".pdf","INSPEÇÃO DE EXTINTORES",["Bloco A e Bloco B"],15);
+  txt("Manutenção/Hidrantes/Controle de limpeza "+ano+".xlsx","planilha de exemplo",4);
+  txt("Manutenção/Hidrantes/Mapa dos hidrantes.pdf","%PDF-1.4 exemplo",120);
+  txt("Procedimentos/Procedimento de bloqueio e etiquetagem.docx","documento de exemplo",400);
+  txt("Procedimentos/Apresentação Regras de Ouro.pptx","apresentação de exemplo",800);
+  seg["2.0 Meio Ambiente"]={"Licenças":{}};
+  await (async()=>{const b=await demoPdf(0,0,"LICENÇA DE OPERAÇÃO",["Documento fictício"],1);seg["2.0 Meio Ambiente"]["Licenças"]["Licença de Operação.pdf"]=new File([b],"Licença de Operação.pdf",{type:"application/pdf",lastModified:Date.now()-300*864e5});})();
+  return demoPastaVirtual("SEG (exemplo)",seg);
+}
+
 $("#dDemo").onclick=montarDemo;
 window.montarDemo=montarDemo;
 if(/[?&#]demo\b/.test(location.search+location.hash))setTimeout(montarDemo,300);
